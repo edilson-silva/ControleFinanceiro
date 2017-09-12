@@ -1,0 +1,6 @@
+﻿create table usuario(
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(30),
+	usuario VARCHAR(30),
+	senha VARCHAR(20)
+)
