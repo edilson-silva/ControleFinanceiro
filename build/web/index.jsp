@@ -16,25 +16,26 @@
                 <table>
                     <thead>
                         <tr>
-                            <td colspan="2">Controle<span>Financeiro</span></td>
+                            <th colspan="2">Controle<span>Financeiro</span></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="leftTitle">Usuário</td>
-                            <td><input type="text" name="inpEmail"/></td>
+                            <td class="tdLeft">Usuário</td>
+                            <td class="tdRight"><input type="text" name="inpEmail"/></td>
                         </tr>
                         <tr>
-                            <td class="leftTitle">Senha</td>
-                            <td><input type="password" name="inpSenha"/></td>
+                            <td class="tdLeft">Senha</td>
+                            <td class="tdRight" ><input type="password" name="inpSenha"/></td>
                         </tr>
                         <tr>
-                            <td><input type="submit" name="btnAcao" value="Login"/></td>
-                            <td><input type="submit" name="btnAcao" value="Cadastrar"/></td>
+                            <td class="tdRight" colspan="2">
+                                <input class="btnLogin" type="submit" name="btnAcao" value="Login"/>
+                                <input class="btnCadastrar" type="submit" name="btnAcao" value="Cadastrar"/>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-
             </form>
         </div>
     </body>

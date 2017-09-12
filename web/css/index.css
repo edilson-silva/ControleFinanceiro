@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
 body{
+    background-color: rgb(245,245,245);
     font-family: Verdana, sans-serif;
-    background:  rgb(245,245,245);
 }
 
-#frm_login {
+#frm_login{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -14,23 +14,70 @@ body{
     align-items: center;
 }
 
-table {
+table{
     background: #333;
     box-shadow: 8px 8px 10px rgba(0,0,0,.3);
+    color: #fff;
     padding: 30px;
 }
 
-table td {
+thead th{
+    font-size: 35px;
+    font-weight: bolder;
+    padding-bottom: 10px;
+}
+
+thead th span{
+    color: #6666FF;
+}
+
+tbody tr td.tdLeft{
+    font-size: 18px;
+    text-align: right;
+}
+
+tbody tr td.tdRight{
+    padding: 5px;
+}
+
+tbody tr td input{
+    height: 20px;
+    background: rgba(255,255,255,.0);
+}
+
+tbody tr td.tdRight input[type="text"], input[type="password"]{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #FFF;
+    color: #fff;
+}
+
+tbody tr {
+}
+
+tbody tr td.tdRight input[type="submit"]{
+    width: 48%;
+    height: 40px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    background: none;
+    border: 2px solid #fff;
     color: #FFF;
 }
 
-thead tr td {
-    font-size: 35px;
-    font-weight: bolder;
+tbody tr td.tdRight input[type="submit"].btnLogin:hover{
+    background: #fff;
+    border: 2px solid #fff;
+    color: #333;
 }
 
-thead tr td span{
-    color: #6666FF;
+tbody tr td.tdRight input[type="submit"].btnCadastrar{
+    margin-left: 2%;
+}
+
+/*
+table td {
+    color: #FFF;
 }
 
 tbody tr {
@@ -55,3 +102,5 @@ tbody tr td input[type="text"], input[type="password"]{
     border-bottom: 1px solid #FFF;
     
 }
+
+*/
