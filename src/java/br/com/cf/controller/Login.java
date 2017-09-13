@@ -1,5 +1,6 @@
 package br.com.cf.controller;
 
+import br.com.cf.dao.UsuarioDao;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "Login", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
-
-
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -37,10 +36,14 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getAttribute("inpEmail").toString();
-        String senha = request.getAttribute("inpSenha").toString();
+        String usuario = request.getParameter("usuario");
+        String senha = request.getParameter("senha");
         
+        if(UsuarioDao.login(usuario, senha)){
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+        }
         
+        response.sendRedirect("index.jsp");
         
     }
 }

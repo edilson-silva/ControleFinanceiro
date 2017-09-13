@@ -22,11 +22,11 @@
                     <tbody>
                         <tr>
                             <td class="tdLeft">Usuário</td>
-                            <td class="tdRight"><input type="text" name="inpEmail"/></td>
+                            <td class="tdRight"><input type="text" name="usuario" minlength="8" maxlength="30"/></td>
                         </tr>
                         <tr>
                             <td class="tdLeft">Senha</td>
-                            <td class="tdRight" ><input type="password" name="inpSenha"/></td>
+                            <td class="tdRight" ><input type="password" name="senha" minlength="8" maxlength="20"/></td>
                         </tr>
                         <tr>
                             <td class="tdRight" colspan="2">
