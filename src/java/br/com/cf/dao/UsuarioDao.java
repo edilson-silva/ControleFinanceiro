@@ -1,5 +1,6 @@
 package br.com.cf.dao;
 
+import br.com.cf.bean.Usuario;
 import br.com.cf.connection.ConnectionManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,11 +12,10 @@ import java.util.logging.Logger;
 public class UsuarioDao {
 
     public static boolean login(String usuario, String senha) {
-
         try {
             Connection connection = ConnectionManager.getConnection();
 
-            String sql = "SELECT id FROM usuario WHERE usuario = ? AND senha = ?";
+            String sql = "SELECT id FROM usuario WHERE usuario = ? AND senha = ?;";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, usuario);
@@ -34,6 +34,52 @@ public class UsuarioDao {
         }
 
         return false;
+    }
+
+    public static boolean cadastrar(Usuario usuario) {
+        try {
+            Connection connection = ConnectionManager.getConnection();
+
+            String sql = "INSERT INTO usuario(nome, usuario, senha) VALUES(?,?,?);";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, usuario.getNome());
+            preparedStatement.setString(2, usuario.getUsuario());
+            preparedStatement.setString(3, usuario.getSenha());
+
+            return preparedStatement.execute();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
+
+    public static Usuario getUsuario(long id) {
+        
+        try {
+            Connection connection = ConnectionManager.getConnection();
+
+            String sql = "SELECT * FROM usuario WHERE id = ?;";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, id);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getInt("id") != 0) {
+                    return new Usuario(rs.getLong("id"), rs.getString("nome"), rs.getString("usuario"), rs.getString("senha"));
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
     }
 
 }

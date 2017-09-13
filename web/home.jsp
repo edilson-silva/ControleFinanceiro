@@ -1,15 +1,10 @@
-<%-- 
-    Document   : home
-    Created on : 13/09/2017, 11:46:05
-    Author     : edilson
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="shortcut icon" type="image/png" href="imagens/favicon.png"/>
     </head>
     <body>
         <h1>Hello World!</h1>
