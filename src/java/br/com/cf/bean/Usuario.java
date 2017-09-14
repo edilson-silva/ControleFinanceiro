@@ -20,6 +20,14 @@ public class Usuario {
         this.senha = senha;
     }
     
+    public Usuario(long id, String nome, String usuario) {
+        this.id = id;
+        this.nome = nome;
+        this.usuario = usuario;
+        this.senha = "";
+        this.despesas = new ArrayList<>();
+    }
+    
     public Usuario(long id, String nome, String usuario, String senha) {
         this.id = id;
         this.nome = nome;

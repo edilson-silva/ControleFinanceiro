@@ -45,9 +45,9 @@ public class IndexController extends HttpServlet {
             String senha = request.getParameter("senha");
 
             if (UsuarioDao.login(usuario, senha)) {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("home.jsp");
             }
-            response.sendRedirect("index.jsp");
+            
         } else if (acao.equalsIgnoreCase("cadastrar")) {
             response.sendRedirect("cadastro.jsp");
         }

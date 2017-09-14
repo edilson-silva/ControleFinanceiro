@@ -17,11 +17,11 @@ public class UsuarioDao {
 
             String sql = "SELECT id FROM usuario WHERE usuario = ? AND senha = ?;";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, usuario);
-            preparedStatement.setString(2, senha);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, usuario);
+            statement.setString(2, senha);
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
                 if (resultSet.getInt("id") != 0) {
@@ -42,13 +42,13 @@ public class UsuarioDao {
 
             String sql = "INSERT INTO usuario(nome, usuario, senha) VALUES(?,?,?);";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement statement = connection.prepareStatement(sql);
 
-            preparedStatement.setString(1, usuario.getNome());
-            preparedStatement.setString(2, usuario.getUsuario());
-            preparedStatement.setString(3, usuario.getSenha());
+            statement.setString(1, usuario.getNome());
+            statement.setString(2, usuario.getUsuario());
+            statement.setString(3, usuario.getSenha());
 
-            return preparedStatement.execute();
+            return (statement.executeUpdate() > 0);
 
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,20 +58,20 @@ public class UsuarioDao {
     }
 
     public static Usuario getUsuario(long id) {
-        
+
         try {
             Connection connection = ConnectionManager.getConnection();
 
-            String sql = "SELECT * FROM usuario WHERE id = ?;";
+            String sql = "SELECT nome, usuario FROM usuario WHERE id = ?;";
 
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setLong(1, id);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, id);
 
-            ResultSet rs = preparedStatement.executeQuery();
-
+            ResultSet rs = statement.executeQuery();
+            
             while (rs.next()) {
                 if (rs.getInt("id") != 0) {
-                    return new Usuario(rs.getLong("id"), rs.getString("nome"), rs.getString("usuario"), rs.getString("senha"));
+                    return new Usuario(id, rs.getString("nome"), rs.getString("usuario"));
                 }
             }
 
